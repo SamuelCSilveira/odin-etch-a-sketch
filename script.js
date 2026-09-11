@@ -8,6 +8,10 @@ const CONTAINER_HEIGHT = parseInt(window
     .getComputedStyle(container)
     .getPropertyValue("max-height"), 10);
 
+function randomColor() {
+    return Math.floor(Math.random() * 256);
+}
+
 function createGrid(size) {
     container.textContent = "";
     for (let i = 0; i < (size * size); i++) { 
@@ -18,10 +22,13 @@ function createGrid(size) {
         square.style.height = `${CONTAINER_HEIGHT / size}px`;
         
         square.addEventListener("mouseenter", 
-            (e) => e.target.style.backgroundColor = "green"
+            (e) => { 
+                if (e.target.style.backgroundColor == 0) e.target.style.opacity = 0.1;
+                e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`    
+            }
         );
-        square.addEventListener("mouseleave", 
-            (e) => e.target.style.backgroundColor = "lightgreen"
+        square.addEventListener("mouseleave",  
+            (e) => e.target.style.opacity = Number(e.target.style.opacity) + 0.1  
         );
         
         container.appendChild(square);

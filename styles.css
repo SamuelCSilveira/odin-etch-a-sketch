@@ -13,10 +13,10 @@ body {
     max-width: 780px;
     max-height: 780px;
     margin: 16px;
+    border: 2px solid black;
 }
 
 .square {
     margin: 0px;
     border: 0px;
-    background-color: lightgreen;
 }
